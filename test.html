@@ -1,0 +1,28 @@
+<body>
+    <div></div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const div = document.querySelector('div');
+  
+      function getData1() {
+        const data = axios.get('http://ggoreb.com/api/lotto.jsp?drwNo=1');
+        data.then((res) => {
+          for(let key in res.data) {
+            div.innerHTML += `<p>${res.data[key]}</p>`;
+          }
+        });
+      }
+      getData1();
+  
+      async function getData2() {
+        const data = await axios.get('http://ggoreb.com/api/lotto.jsp?drwNo=1');
+        for(let key in data.data) {
+          div.innerHTML += `<p>${data.data[key]}</p>`;
+        }
+      }
+      getData2();
+  
+    </script>
+  </body>
+  
